@@ -13,4 +13,8 @@ public class Entry {
 		this.opinion = opinion;
 		date = new Date();
 	}
+	
+	public String toString() {
+		return name +" told "+ opinion +" at " + date;
+	}
 }
