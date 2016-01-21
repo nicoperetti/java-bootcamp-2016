@@ -8,7 +8,9 @@ public interface ShoppingCart {
 	
 	public void removeproduct(Product product);
 	
-	public float getsubtotal();
+	public double getsubtotal();
 	
 	public List<Product> getproductlist();
+	
+	public int getquantity();
 }
