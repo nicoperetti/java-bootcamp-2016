@@ -17,4 +17,6 @@ public abstract class Product {
 	public String state() {
 		return state;
 	}
+	
+	public abstract String toString();
 }

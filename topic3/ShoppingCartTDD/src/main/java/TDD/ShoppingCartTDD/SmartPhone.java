@@ -11,22 +11,34 @@ public class SmartPhone extends Product {
 		description = desc;
 		this.offer = offer;
 	}
+	
 	@Override
 	public double getprice() {
-		// TODO Auto-generated method stub
-		return 0;
+		double result = price;
+		if (this.inoffer()) {
+			result -= (price * offer);
+		}
+		return result;
 	}
 
 	@Override
 	public String getdescription() {
-		// TODO Auto-generated method stub
-		return null;
+		return description;
 	}
-
+	
 	@Override
 	public boolean inoffer() {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		if (offer != 0) {
+			result = true;
+		}
+		return result;
+	}
+	
+	@Override
+	public String toString() {
+		double off = offer * 100;
+		return "SmartPhone: " + description + ". Price: $" + price + " "+ off +"% off";
 	}
 
 }

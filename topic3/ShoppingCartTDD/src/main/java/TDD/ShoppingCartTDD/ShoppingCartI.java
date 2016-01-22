@@ -20,7 +20,8 @@ public class ShoppingCartI implements ShoppingCart{
 
 	@Override
 	public void removeproduct(Product product) {
-		
+		productlist.remove(product);
+		subtotal -= product.getprice();
 	}
 
 	@Override
@@ -30,7 +31,7 @@ public class ShoppingCartI implements ShoppingCart{
 
 	@Override
 	public List<Product> getproductlist() {
-		return null;
+		return productlist;
 	}
 
 	@Override

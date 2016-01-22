@@ -11,6 +11,7 @@ public class SmartTV extends Product{
 		description = desc;
 		this.offer = offer;
 	}
+	
 	@Override
 	public double getprice() {
 		double result = price;
@@ -22,7 +23,7 @@ public class SmartTV extends Product{
 
 	@Override
 	public String getdescription() {
-		return null;
+		return description;
 	}
 	
 	@Override
@@ -32,5 +33,11 @@ public class SmartTV extends Product{
 			result = true;
 		}
 		return result;
+	}
+	
+	@Override
+	public String toString() {
+		double off = offer * 100;
+		return "SmartTV: " + description + ". Price: $" + price + " "+ off +"% off";
 	}
 }
