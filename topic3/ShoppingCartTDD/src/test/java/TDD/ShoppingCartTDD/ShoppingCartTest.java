@@ -21,7 +21,9 @@ public class ShoppingCartTest {
 	@Test
 	public void testShoppingCartAdd1Product() {
 		ShoppingCart shoppingcart = new ShoppingCartI();
-		Product product = new SmartTV(3000, "Samsung TV 32´", 0.2);
+		ProductFactory pfactory = new ProductFactory();
+		Product product = pfactory.getProduct("SmarTV", 3000, "Samsung TV 32´", 0.2);
+		/*Product product = new SmartTV(3000, "Samsung TV 32´", 0.2);*/
 		shoppingcart.addproduct(product);
 		assertEquals(1, shoppingcart.getquantity());
 	}
