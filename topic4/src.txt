@@ -92,3 +92,11 @@ insert into schedule_time values (3, 'wednesday', 14, 16);
 insert into schedule_time values (3, 'friday', 14, 17);
 
 
+select course.name as course_name, teacher.last_name as teacher_lastN, teacher.first_name as teacher_firstN, student.last_name as student_lastN, student.first_name as student_firstN 
+from course join student_course on course.id_course=student_course.id_course 
+join student on student.register_number=student_course.id_student 
+join teacher on teacher.id_teacher=course.assigned_teacher 
+where course.name= "math" 
+order by student.last_name;
+
+
