@@ -1,0 +1,94 @@
+create database highschool;
+
+use highschool;
+
+CREATE TABLE student (register_number INT NOT NULL AUTO_INCREMENT, first_name VARCHAR(30) NOT NULL, last_name varchar(30) not null, date_of_birth varchar(30) not null,PRIMARY KEY (register_number));
+
+CREATE TABLE teacher (id_teacher INT NOT NULL AUTO_INCREMENT, first_name VARCHAR(30) NOT NULL, last_name varchar(30) not null, date_of_birth varchar(30) not null, PRIMARY KEY (id_teacher));
+
+CREATE TABLE course (id_course int not null AUTO_INCREMENT, name VARCHAR(30) NOT NULL, assigned_teacher int not null, hours_by_week int not null, primary key (id_course), foreign KEY (assigned_teacher) references teacher(id_teacher));
+
+create table schedule_time (id_course int not null, day varchar(30) not null, hour_begin int not null, hour_end int not null, foreign key(id_course) references course(id_course));
+
+CREATE TABLE student_course (id_course int NOT NULL, id_student int not null, first_partial int not null, second_partial int not null, final int not null, foreign KEY (id_course) references course(id_course), foreign key (id_student) references student(register_number));
+
+
+insert into teacher values(default, 'Mariel', 'Perez', '13/06/1980');
+insert into teacher values(default, 'Ana', 'Garcia', '13/06/1981');
+insert into teacher values(default, 'Roberto', 'Gonzales', '13/06/1982');
+
+
+INSERT INTO student values(default, 'nico1', 'peretti1', '16/12/2000');
+INSERT INTO student values(default, 'nico2', 'peretti2', '16/12/2001');
+INSERT INTO student values(default, 'nico3', 'peretti3', '16/12/2002');
+INSERT INTO student values(default, 'nico4', 'peretti4', '16/12/2003');
+INSERT INTO student values(default, 'nico5', 'peretti5', '16/12/2004');
+INSERT INTO student values(default, 'nico6', 'peretti6', '16/12/2005');
+INSERT INTO student values(default, 'nico7', 'peretti7', '16/12/2006');
+INSERT INTO student values(default, 'nico8', 'peretti8', '16/12/2007');
+INSERT INTO student values(default, 'nico9', 'peretti9', '16/12/2008');
+INSERT INTO student values(default, 'nico10', 'peretti10', '16/12/2009');
+INSERT INTO student values(default, 'nico11', 'peretti11', '16/12/2000');
+INSERT INTO student values(default, 'nico12', 'peretti12', '16/12/2001');
+INSERT INTO student values(default, 'nico13', 'peretti13', '16/12/2002');
+INSERT INTO student values(default, 'nico14', 'peretti14', '16/12/2003');
+INSERT INTO student values(default, 'nico15', 'peretti15', '16/12/2004');
+INSERT INTO student values(default, 'nico16', 'peretti16', '16/12/2005');
+INSERT INTO student values(default, 'nico17', 'peretti17', '16/12/2006');
+INSERT INTO student values(default, 'nico18', 'peretti18', '16/12/2007');
+INSERT INTO student values(default, 'nico19', 'peretti19', '16/12/2008');
+INSERT INTO student values(default, 'nico20', 'peretti20', '16/12/2009');
+INSERT INTO student values(default, 'nico21', 'peretti21', '16/12/2000');
+INSERT INTO student values(default, 'nico22', 'peretti22', '16/12/2001');
+INSERT INTO student values(default, 'nico23', 'peretti23', '16/12/2002');
+INSERT INTO student values(default, 'nico24', 'peretti24', '16/12/2003');
+INSERT INTO student values(default, 'nico25', 'peretti25', '16/12/2004');
+INSERT INTO student values(default, 'nico26', 'peretti26', '16/12/2005');
+INSERT INTO student values(default, 'nico27', 'peretti27', '16/12/2006');
+INSERT INTO student values(default, 'nico28', 'peretti28', '16/12/2007');
+INSERT INTO student values(default, 'nico29', 'peretti29', '16/12/2008');
+INSERT INTO student values(default, 'nico30', 'peretti30', '16/12/2009');
+
+insert into course values (default, 'math', 1, 1);
+insert into course values (default, 'art', 2, 4);
+insert into course values (default, 'biology', 3, 7);
+
+insert into student_course values (1, 1, 10, 8, 10);
+insert into student_course values (1, 2, 8, 3, 10);
+insert into student_course values (1, 3, 2, 2, 5);
+insert into student_course values (1, 4, 10, 8, 2);
+insert into student_course values (1, 5, 10, 7, 1);
+insert into student_course values (1, 6, 4, 10, 1);
+insert into student_course values (1, 7, 6, 9, 2);
+insert into student_course values (1, 8, 5, 1, 4);
+insert into student_course values (1, 9, 6, 7, 3);
+insert into student_course values (1, 10, 3, 3, 10);
+insert into student_course values (2, 11, 8, 10, 3);
+insert into student_course values (2, 12, 3, 8, 8);
+insert into student_course values (2, 13, 3, 2, 4);
+insert into student_course values (2, 14, 3, 9, 1);
+insert into student_course values (2, 15, 2, 7, 7);
+insert into student_course values (2, 16, 7, 9, 10);
+insert into student_course values (2, 17, 4, 3, 4);
+insert into student_course values (2, 18, 7, 5, 1);
+insert into student_course values (2, 19, 3, 3, 9);
+insert into student_course values (2, 20, 5, 7, 8);
+insert into student_course values (3, 21, 7, 1, 8);
+insert into student_course values (3, 22, 9, 6, 9);
+insert into student_course values (3, 23, 10, 3, 5);
+insert into student_course values (3, 24, 4, 8, 4);
+insert into student_course values (3, 25, 4, 10, 7);
+insert into student_course values (3, 26, 4, 8, 5);
+insert into student_course values (3, 27, 1, 5, 7);
+insert into student_course values (3, 28, 1, 6, 2);
+insert into student_course values (3, 29, 9, 5, 1);
+insert into student_course values (3, 30, 7, 8, 8);
+
+insert into schedule_time values (1, 'monday', 9, 10);
+insert into schedule_time values (2, 'monday', 9, 11);
+insert into schedule_time values (2, 'wednesday', 9, 11);
+insert into schedule_time values (3, 'monday', 14, 16);
+insert into schedule_time values (3, 'wednesday', 14, 16);
+insert into schedule_time values (3, 'friday', 14, 17);
+
+
