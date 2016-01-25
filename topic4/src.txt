@@ -104,3 +104,9 @@ select (select count(*) from student_course join course on course.id_course=stud
 
 select (select count(*) from student_course join course on course.id_course=student_course.id_course where course.name="math" and student_course.final < 4)/(select count(*) from student_course join course on course.id_course=student_course.id_course where course.name="math")*100 as Percentage_of_students_that_failed_a_course;
 
+
+select teacher.last_name, teacher.first_name, day, hour_begin, hour_end, course.name from teacher join course on teacher.id_teacher=course.assigned_teacher join schedule_time on schedule_time.id_course=course.id_course where teacher.last_name="Gonzales" and teacher.first_name="Roberto";
+
+select teacher.last_name, teacher.first_name, day, hour_begin, hour_end, course.name from teacher join course on teacher.id_teacher=course.assigned_teacher join schedule_time on schedule_time.id_course=course.id_course where teacher.last_name="Perez" and teacher.first_name="Mariel";
+
+select teacher.last_name, teacher.first_name, day, hour_begin, hour_end, course.name from teacher join course on teacher.id_teacher=course.assigned_teacher join schedule_time on schedule_time.id_course=course.id_course where teacher.last_name="Garcia" and teacher.first_name="Ana";
