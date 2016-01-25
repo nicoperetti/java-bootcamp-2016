@@ -100,3 +100,7 @@ where course.name= "math"
 order by student.last_name;
 
 
+select (select count(*) from student_course join course on course.id_course=student_course.id_course where course.name="math" and student_course.final >= 4)/(select count(*) from student_course join course on course.id_course=student_course.id_course where course.name="math")*100 as Percentage_of_students_that_passed_a_course;
+
+select (select count(*) from student_course join course on course.id_course=student_course.id_course where course.name="math" and student_course.final < 4)/(select count(*) from student_course join course on course.id_course=student_course.id_course where course.name="math")*100 as Percentage_of_students_that_failed_a_course;
+
