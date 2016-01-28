@@ -1,0 +1,6 @@
+package Query.Mongo;
+
+
+public class MongoDBJDBCTest {
+
+}

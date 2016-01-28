@@ -1,0 +1,23 @@
+use highschool
+
+db.student.insert({"first_name": "nicolas", "last_name": "peretti", "dob": 1994, "final": 4, "course_id": 1})
+db.student.insert({"first_name": "valentina", "last_name": "perez", "dob": 1994, "final": 10, "course_id": 1})
+db.student.insert({"first_name": "tomas", "last_name": "audagna", "dob": 1994, "final": 1, "course_id": 2})
+db.student.insert({"first_name": "emiliano", "last_name": "guevara", "dob": 1994, "final": 3, "course_id": 2})
+db.student.insert({"first_name": "gonzalo", "last_name": "garcia", "dob": 1994, "final": 6, "course_id": 3})
+
+
+db.teacher.insert({"_id": 1, "first_name": "ana", "last_name": "rodriguez"})
+db.teacher.insert({"_id": 2, "first_name": "maria", "last_name": "pereyra"})
+db.teacher.insert({"_id": 3, "first_name": "jorge", "last_name": "sanchez"})
+db.teacher.insert({"_id": 4, "first_name": "roberto", "last_name": "gonzales"})
+db.teacher.insert({"_id": 5, "first_name": "patricia", "last_name": "monta"})
+
+db.course.insert({"_id": 1,"name": "math", "hbw": 6, "schedule": [{"day": "monday","h_b": "9", "h_e": "12"}, {"day": "friday","h_b": "9", "h_e": "12"}], "teacher": 1})
+
+db.course.insert({"_id": 2,"name": "art", "hbw": 6, "schedule": [{"day": "monday","h_b": "9", "h_e": "12"}, {"day": "friday","h_b": "9", "h_e": "12"}], "teacher": 2})
+
+db.course.insert({"_id": 3,"name": "biology", "hbw": 6, "schedule": [{"day": "monday","h_b": "9", "h_e": "12"}, {"day": "friday","h_b": "9", "h_e": "12"}], "teacher": 3})
+
+db.course.insert({"_id": 4,"name": "literature", "hbw": 6, "schedule": [{"day": "monday","h_b": "9", "h_e": "12"}, {"day": "friday","h_b": "9", "h_e": "12"}], "teacher": 1})
+

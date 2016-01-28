@@ -1,0 +1,12 @@
+package Query.Mongo;
+
+import org.junit.Test;
+
+public class MongoDBJDBCTest {
+	
+	@Test
+	public void testtoconectdb() {
+		MongoDBJDBC m = new MongoDBJDBC();
+	}
+
+}
