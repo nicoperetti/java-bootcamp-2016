@@ -20,13 +20,13 @@ class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String addUser(String username, String lastname, String nickname) {
+    public String addUser(String username, String pass, String lastname, String nickname) {
         String result = "ok!";
         if (this.userRepository.exists(username)) {
             result = "You must change the username. Try again!";
         }
         else {
-            User newuser = new User(username, lastname, nickname);
+            User newuser = new User(username, pass, lastname, nickname);
             this.userRepository.save(newuser);
         }
         return result;
@@ -37,16 +37,19 @@ class UserServiceImpl implements UserService {
         String result = "Invalid username!";
         if (this.userRepository.exists(username)) {
             User user = this.userRepository.findOne(username);
-            result = "update ";
-            if (lastname != "") {
-                result += "lastname ";
-                user.setLastName(lastname);
+            result = "You need to be login to update your user";
+            if (user.getlogin()) {
+                result = "update ";
+                if (lastname != "") {
+                    result += "lastname ";
+                    user.setLastName(lastname);
+                }
+                if (nickname != "") {
+                    result += ", nickname";
+                    user.setNickName(nickname);
+                }
+                this.userRepository.save(user);
             }
-            if (nickname != "") {
-                result += ", nickname";
-                user.setNickName(nickname);
-            }
-            this.userRepository.save(user);
         }
         return result;
     }
@@ -55,8 +58,42 @@ class UserServiceImpl implements UserService {
     public String deleteUser(String username) {
         String result = "This username does not exist!";
         if (this.userRepository.exists(username)) {
-            result = "Deleting user";
-            this.userRepository.delete(username);
+            result = "You need to be login to delete your user";
+            if (this.userRepository.findOne(username).getlogin()) {
+                result = "Deleting user";
+                this.userRepository.delete(username);
+            }
+        }
+        return result;
+    }
+
+    public String login(String username, String password) {
+        String result = "This username does not exist!";
+        if (this.userRepository.exists(username)) {
+            User user = this.userRepository.findOne(username);
+            if(user.correctpass(password)) {
+                result = "Ok!";
+                user.setlogin();
+                this.userRepository.save(user);
+            }
+            else {
+                result = "Incorrect password for the given username";
+                result += ".User: "+username+".Pass: "+password;
+            }
+        }
+        return result;
+    }
+
+    public String logout(String username) {
+        String result = "This username does not exist!";
+        if (this.userRepository.exists(username)) {
+            result = "You need to be login to logout";
+            User user = this.userRepository.findOne(username);
+            if (user.getlogin()) {
+                result = "Logout";
+                user.logout();
+                this.userRepository.save(user);
+            }
         }
         return result;
     }
