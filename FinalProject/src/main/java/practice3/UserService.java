@@ -10,13 +10,17 @@ public interface UserService {
 
     String deleteUser(String username);
 
+    boolean isLogged(String username);
+
+    boolean validUsername(String username);
+
     String login(String username, String password);
 
     String logout(String username);
 
-    List<String> showUser();
+    List<User> showUser();
 
-    List<String> findUserByLastName(String lastname);
+    List<User> findUserByLastName(String lastname);
 
-    List<String> findUserByNickName(String nickname);
+    List<User> findUserByNickName(String nickname);
 }

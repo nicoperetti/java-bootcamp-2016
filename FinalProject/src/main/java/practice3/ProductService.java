@@ -6,9 +6,9 @@ public interface ProductService {
 
     String addProduct(long id, String name, String category, double price);
 
-    List<String> showProduct();
+    List<Product> showProduct();
 
-    List<String> findProductByName(String name);
+    List<Product> findProductByName(String name);
 
-    List<String> findProductByCategory(String category);
+    List<Product> findProductByCategory(String category);
 }

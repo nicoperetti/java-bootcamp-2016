@@ -22,8 +22,24 @@ public class Product {
     @Override
     public String toString() {
         return String.format(
-                "User[id=%d, name=%s, category='%s', price='%f']",
+                "Product[id=%d, name=%s, category='%s', price='%f']",
                 id, name, category, price);
     }
 
+    public long getId() {
+        return this.id;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public double getPrice() {
+        return this.price;
+    }
+
+
+    public String getCategory() {
+        return this.category;
+    }
 }

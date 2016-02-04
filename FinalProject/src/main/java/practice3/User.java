@@ -48,12 +48,25 @@ public class User {
         this.login = true;
     }
 
-    public boolean getlogin() {
-        return this.login;
-    }
 
     public void logout() {
         this.login = false;
     }
 
+    public String getUsername() {
+        return this.userName;
+    }
+
+    public String getLastname() {
+        return this.lastName;
+    }
+
+    public String getNickname() {
+        return this.nickName;
+    }
+
+    public boolean getlogin() {
+        return this.login;
+    }
 }
+

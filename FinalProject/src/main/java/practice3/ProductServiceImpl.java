@@ -50,33 +50,23 @@ class ProductServiceImpl implements ProductService {
 //    }
 
     @Override
-    public List<String> showProduct() {
-        List<String> productlist = new ArrayList<String>();
-        for (Product product: productRepository.findAll()) {
-            productlist.add(product.toString());
-        }
+    public List<Product> showProduct() {
+        List<Product> productlist = new ArrayList<Product>();
+        productlist = productRepository.findAll();
         return productlist;
     }
 
     @Override
-    public List<String> findProductByName(String name) {
-        List<String> result = new ArrayList<String>();
+    public List<Product> findProductByName(String name) {
         List<Product> productlist = new ArrayList<Product>();
         productlist = productRepository.findByName(name);
-        for (int i = 0; i < productlist.size(); i++) {
-            result.add(productlist.get(i).toString());
-        }
-        return result;
+        return productlist;
     }
 
     @Override
-    public List<String> findProductByCategory(String category) {
-        List<String> result = new ArrayList<String>();
+    public List<Product> findProductByCategory(String category) {
         List<Product> productlist = new ArrayList<Product>();
         productlist = productRepository.findByCategory(category);
-        for (int i = 0; i < productlist.size(); i++) {
-            result.add(productlist.get(i).toString());
-        }
-        return result;
+        return productlist;
     }
 }
