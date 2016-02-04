@@ -18,9 +18,24 @@ public class Cart {
         this.productlist = new ArrayList<Product>();
     }
 
+    public String buyProduct() {
+        String result = "You bought this product; ";
+        for (int i = 0; i < productlist.size(); i++) {
+            result += productlist.get(i).getName();
+            result += ", ";
+        }
+        result += "for $" + subtotal;
+        return result;
+    }
+
     public void addProductToCart(Product p) {
-        productlist.add(p);
+        this.productlist.add(p);
         this.subtotal += p.getPrice();
+    }
+
+    public void removeProductFromCart(Product p) {
+        this.productlist.remove(p);
+        this.subtotal -= p.getPrice();
     }
 
     public List<Product> getProductList() {

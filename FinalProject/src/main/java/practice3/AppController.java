@@ -119,12 +119,23 @@ public class AppController {
         return cartService.createCart(username);
     }
 
-    @RequestMapping(value="{username}/addproducttocart", method = RequestMethod.GET)
+    @RequestMapping(value="{username}/addproducttocart", method = RequestMethod.POST)
     public String addproducttocart(@PathVariable String username,
-                            @RequestParam(value="productname") String productname) {
-        List<Product> productlist = productService.findProductByName(productname);
-        Product p = productlist.get(0);//to test, change this later
-        return cartService.addProductToCart(username, p);
+                            @RequestParam(value="productid") long productid) {
+        Product product = productService.findOne(productid);
+        return cartService.addProductToCart(username, product);
+    }
+
+    @RequestMapping(value="{username}/removeproductfromcart", method = RequestMethod.POST)
+    public String removeproductfromcart(@PathVariable String username,
+                            @RequestParam(value="productid") long productid) {
+        Product product = productService.findOne(productid);
+        return cartService.removeProductFromCart(username, product);
+    }
+
+    @RequestMapping(value="{username}/deletecart", method = RequestMethod.GET)
+    public String deletecart(@PathVariable String username) {
+        return cartService.deleteCart(username);
     }
 
     @RequestMapping(value="{username}/showcart", method = RequestMethod.GET)
@@ -132,6 +143,11 @@ public class AppController {
         return cartService.showCart(username);
     }
 
+
+    @RequestMapping(value="{username}/buyproductfromcart", method = RequestMethod.GET)
+    public String buyproductfromcart(@PathVariable String username) {
+        return cartService.buyProductFromCart(username);
+    }
 //-----------------------------Cart Controller ---------------------------------
 
 }

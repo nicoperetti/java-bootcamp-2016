@@ -27,28 +27,6 @@ class ProductServiceImpl implements ProductService {
         return result;
     }
 
-//    @Override
-//    public String updateUser(String username, String lastname, String nickname) {
-//        String result = "Invalid username!";
-//        if (this.userRepository.exists(username)) {
-//            User user = this.userRepository.findOne(username);
-//            result = "You need to be login to update your user";
-//            if (user.getlogin()) {
-//                result = "update ";
-//                if (lastname != "") {
-//                    result += "lastname ";
-//                    user.setLastName(lastname);
-//                }
-//                if (nickname != "") {
-//                    result += ", nickname";
-//                    user.setNickName(nickname);
-//                }
-//                this.userRepository.save(user);
-//            }
-//        }
-//        return result;
-//    }
-
     @Override
     public List<Product> showProduct() {
         List<Product> productlist = new ArrayList<Product>();
@@ -68,5 +46,10 @@ class ProductServiceImpl implements ProductService {
         List<Product> productlist = new ArrayList<Product>();
         productlist = productRepository.findByCategory(category);
         return productlist;
+    }
+
+    @Override
+    public Product findOne(long id) {
+        return this.productRepository.findOne(id);
     }
 }

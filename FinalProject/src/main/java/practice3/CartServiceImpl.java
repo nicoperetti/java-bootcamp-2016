@@ -28,6 +28,12 @@ class CartServiceImpl implements CartService {
     }
 
     @Override
+    public String deleteCart(String username) {
+        this.cartRepository.delete(username);
+        return "Deleting Cart";
+    }
+
+    @Override
     public String addProductToCart(String username, Product product) {
         String result = "Ok!";
         Cart cart = this.cartRepository.findOne(username);
@@ -37,8 +43,25 @@ class CartServiceImpl implements CartService {
     }
 
     @Override
+    public String removeProductFromCart(String username, Product product) {
+        String result = "Ok!";
+        Cart cart = this.cartRepository.findOne(username);
+        cart.removeProductFromCart(product);
+        this.cartRepository.save(cart);
+        return result + cart.toString();
+    }
+
+    @Override
     public Cart showCart(String username) {
         Cart cart = this.cartRepository.findOne(username);
         return cart;
+    }
+
+    @Override
+    public String buyProductFromCart(String username) {
+        Cart cart = this.cartRepository.findOne(username);
+        String result = cart.buyProduct();
+        this.cartRepository.delete(username);
+        return result;
     }
 }

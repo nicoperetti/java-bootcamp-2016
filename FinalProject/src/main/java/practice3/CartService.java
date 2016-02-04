@@ -9,4 +9,10 @@ public interface CartService {
     String addProductToCart(String username, Product product);
 
     Cart showCart(String username);
+
+    String removeProductFromCart(String username, Product product);
+
+    String deleteCart(String username);
+
+    String buyProductFromCart(String username);
 }
