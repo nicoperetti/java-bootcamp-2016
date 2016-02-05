@@ -34,8 +34,16 @@ public class Cart {
     }
 
     public void removeProductFromCart(Product p) {
-        this.productlist.remove(p);
+        long productid = p.getId();
+        int i = 0;
         this.subtotal -= p.getPrice();
+        for (Product product : productlist) {
+            if (productid == product.getId()) {
+                break;
+            }
+            i++;
+        }
+        this.productlist.remove(i);
     }
 
     public List<Product> getProductList() {
